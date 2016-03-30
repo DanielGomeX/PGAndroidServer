@@ -1,0 +1,61 @@
+
+.btn-sz-2 .btn{
+	width: 130px;
+}
+
+
+.hasDatepicker {
+    position: relative;
+    z-index: 99999;
+}
+.btn-actions .btn{
+	padding: 4px 8px;
+}
+
+
+.jumbotron{
+	padding-top: 55px;
+}
+
+.center{
+	text-align: center;
+}
+.error-field{
+	color: #A94442;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	line-height: 1.42857;	
+}
+.help-field{
+	color: #119B30;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	line-height: 1.42857;	
+}
+
+.panel-title{
+	padding-top: 15px;
+}
+
+.max-1{
+	max-width: 50px;
+}
+
+.max-height-1{
+	max-height:90px;
+}
+
+.max-width-1{
+	max-width: 40px;
+}
+
+.googleDiv{	
+	background-color: rgb(229, 227, 223); 
+	overflow: hidden;
+	height: 389px;	
+	width: 98%;
+	border:1px solid;
+}
+
+
+
