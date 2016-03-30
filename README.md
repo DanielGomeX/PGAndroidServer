@@ -20,3 +20,11 @@
  - Permitir login
  - Armazenar posições e ir enviando de tempo em tempo.
 
+ #ToDo
+ 	- Done Create users
+ 	- Done Create User Groups
+	- Done Create Products
+ - Create products groups
+ - Create Cart
+ - Create Geolocation
+
