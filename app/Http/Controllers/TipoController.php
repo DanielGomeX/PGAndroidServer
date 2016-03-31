@@ -4,23 +4,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Group;
+use App\Tipo;
 use App\Permission;
 use Session;
 
-class GroupController extends Controller
+class TipoController extends Controller
 {
     protected $all;
     protected $singular;
     protected $newObject;
     protected $rules;
     public function __construct(){
-        $this->all = Group::orderBy('name');
-        $this->singular = 'group';
-        $this->newObject = new Group();  
+        $this->all = Tipo::orderBy('name');
+        $this->singular = 'tipo';
+        $this->newObject = new Tipo();  
         $this->rules =[                
-                'name' => 'required|max:30',    
-                'nivel' => 'required|digits:1',             
+                'name' => 'required|max:30',                     
             ];         
     }    
 
@@ -37,17 +36,17 @@ class GroupController extends Controller
             //fiz testes de sql-inject no where abaixo
             // e o laravel tratou 
             //tudo corretamente ;)
-            $groups=$this->all
+            $objetoList=$this->all
                 ->where('name','like','%'.$get->input("q").'%')               
                 ->paginate($this->getMaxRows()); 
         }else{
-            $groups=$this->all
+            $objetoList=$this->all
                 ->paginate($this->getMaxRows()); 
         }       
         return view($this->singular.'.list')
             ->with('deleted',False)
             ->with('q',$q)
-            ->with($this->singular."s",$groups);
+            ->with("objetoList",$objetoList);
     }
     
     public function create()
@@ -57,22 +56,20 @@ class GroupController extends Controller
         //form para editar e para cadastrar
         //isso facilita a manutencao e o
         //entendimento do sistema        
-        $group= $this->newObject;
+        $objeto= $this->newObject;
         return view($this->singular.'.form')
-            ->with('acao',trans('labels.new').' '.trans('labels.group'))    
-            ->with('permissions',Permission::all()->lists('name','id')->toArray())      
-            ->with($this->singular,$group);
+            ->with('acao',trans('labels.new').' '.trans('labels.tipo'))              
+            ->with('objeto',$objeto);
     }
 
     public function edit($id)
     {
         //envio para a view o grupo para ser 
         //editado
-        $group= $this->all->find($id);
+        $objeto= $this->all->find($id);
         return view($this->singular.'.form')
-            ->with('acao',trans('labels.edit').' '.$group->name)
-            ->with('permissions',Permission::all()->lists('name','id')->toArray())      
-            ->with($this->singular,$group);
+            ->with('acao',trans('labels.edit').' '.$objeto->name)             
+            ->with('objeto',$objeto);
     }
 
     public function store(Request $request)
@@ -83,31 +80,25 @@ class GroupController extends Controller
         //se tem id entao sera edicao
         if($request->input("id") != ""){
             $acao=trans('labels.edited');
-            $group = $this->all->find($request->input("id"));            
+            $objeto = $this->all->find($request->input("id"));            
         }else{
             //neste caso nao tem id(else) entao criacao
             $acao=trans('labels.created');
-            $group = $this->newObject;           
+            $objeto = $this->newObject;           
         }
 
         //por fim esses campos serao alterados em 
         //qualquer das situacoes de criacao ou edicao
-        $group->name = $request->input("name");     
-        $group->nivel = $request->input("nivel");      
-        if($group->save()){
-            $group->permissions()->detach();
-            if(count($request->input('permissions')) >0){                    
-                    $group->permissions()->sync($request->input('permissions'));
-            }   
-        }
+        $objeto->name = $request->input("name");           
+        $objeto->save();
         Session::flash('message', trans('labels.item').' '.$acao.' '.trans('labels.withSuccess'));
         return redirect()->route($this->singular);
     }
 
     public function destroy($id)
     {       
-        $group = $this->all->find($id);
-        $group->delete();
+        $objeto = $this->all->find($id);
+        $objeto->delete();
         Session::flash('message', trans('labels.item').' '.trans('labels.deletedSingle').' '.trans('labels.withSuccess'));
         return redirect()->route($this->singular);
     }   

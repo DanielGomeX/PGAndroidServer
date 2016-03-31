@@ -21,12 +21,15 @@
  - Armazenar posições e ir enviando de tempo em tempo.
 
  #ToDo(Done)
- - Done Create users
- - Done Create User Groups
- - Done Create Products
+ - Create users
+ - Create users getJson
+ - Create User Groups
+ - Create Products
+ - Create products groups
  
   #ToDo(Pendding)
- - Create products groups
+ - Create products groups getJson
+ - Create Products getJson
  - Create Cart
  - Create Geolocation
 

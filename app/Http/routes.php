@@ -53,6 +53,16 @@ Route::group(['middleware' => 'acl:root'], function(){
 
 Route::group(['middleware' => 'auth'], function(){
 
+	Route::get('tipos', [ 'as' => 'tipo', 'uses' => 'TipoController@index']);
+	Route::get('tipo/deleted', [ 'as' => 'tipo_deleted', 'uses' => 'TipoController@deleted']);
+	Route::get('tipo/new', [ 'as' => 'tipo_new', 'uses' => 'TipoController@create']);
+	Route::get('tipo/edit/{id}', [ 'as' => 'tipo_edit', 'uses' => 'TipoController@edit']);
+	Route::post('tipo/restore/{id}', [ 'as' => 'tipo_restore', 'uses' => 'TipoController@restore']);
+	Route::post('tipo/destroy/{id}', [ 'as' => 'tipo_delete', 'uses' => 'TipoController@destroy']);
+	Route::post('tipo/store', [ 'as' => 'tipo_store', 'uses' => 'TipoController@store']);
+
+
+
 	Route::get('products', [ 'as' => 'product', 'uses' => 'ProductController@index']);
 	Route::get('product/deleted', [ 'as' => 'product_deleted', 'uses' => 'ProductController@deleted']);
 	Route::get('product/new', [ 'as' => 'product_new', 'uses' => 'ProductController@create']);
