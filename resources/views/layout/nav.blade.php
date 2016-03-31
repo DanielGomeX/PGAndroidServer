@@ -20,65 +20,43 @@
                 <ul class="dropdown-menu">
              
                   <li class="dropdown-header">{{ trans('labels.users') }}</li>
-                  <li><a href="{{ route('user') }}">{{ trans('labels.list') }}</a></li>
-                  <li><a href="{{ route('user_deleted') }}">{{ trans('labels.deleted') }}</a></li>
+                  <li><a href="{{ route('user') }}">{{ trans('labels.list') }}</a></li>              
                   <li><a href="{{ route('user_new') }}">{{ trans('labels.new') }}</a></li>  
                   <li role="separator" class="divider"></li>                
            
                   <li class="dropdown-header">{{ trans('labels.groups') }}</li>
-                  <li><a href="{{ route('group') }}">{{ trans('labels.list') }}</a></li>
-                  <li><a href="{{ route('group_deleted') }}">{{ trans('labels.deleted') }}</a></li>
+                  <li><a href="{{ route('group') }}">{{ trans('labels.list') }}</a></li>                 
                   <li><a href="{{ route('group_new') }}">{{ trans('labels.new') }}</a></li>  
                   <li role="separator" class="divider"></li>
-
-               
            
                   <li class="dropdown-header">{{ trans('labels.permissions') }}</li>
                   <li><a href="{{ route('permission') }}">{{ trans('labels.list') }}</a></li>
-                  <li><a href="{{ route('permission_deleted') }}">{{ trans('labels.deleted') }}</a></li>
                   <li><a href="{{ route('permission_new') }}">{{ trans('labels.new') }}</a></li>                 
             
              </ul>
             </li>
             
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('labels.gerenciar') }} <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('labels.product') }}s <span class="caret"></span></a>
                 <ul class="dropdown-menu">
             
-                  <li class="dropdown-header">{{ trans('labels.regions') }}</li>
-                  <li><a href="{{ route('region') }}">{{ trans('labels.list') }}</a></li>
-                  <li><a href="{{ route('region_deleted') }}">{{ trans('labels.deleted') }}</a></li>
-                  <li><a href="{{ route('region_new') }}">{{ trans('labels.new') }}</a></li>  
+                  <li class="dropdown-header">{{ trans('labels.product') }}s</li>
+                  <li><a href="{{ route('product') }}">{{ trans('labels.list') }}</a></li>                  
+                  <li><a href="{{ route('product_new') }}">{{ trans('labels.new') }}</a></li>  
                   <li role="separator" class="divider"></li>
             
-                  <li class="dropdown-header">{{ trans('labels.viaturas') }}</li>
-                  <li><a href="{{ route('viatura') }}">{{ trans('labels.list') }}</a></li>
-                  <li><a href="{{ route('viatura_deleted') }}">{{ trans('labels.deleted') }}</a></li>
-                  <li><a href="{{ route('viatura_new') }}">{{ trans('labels.new') }}</a></li>  
-                  <li role="separator" class="divider"></li>
-               
-            
-                  <li class="dropdown-header">{{ trans('labels.unidades') }}</li>
-                  <li><a href="{{ route('unidade') }}">{{ trans('labels.list') }}</a></li>
-                  <li><a href="{{ route('unidade_deleted') }}">{{ trans('labels.deleted') }}</a></li>
-                  <li><a href="{{ route('unidade_new') }}">{{ trans('labels.new') }}</a></li>  
-                
-            
-                  <li class="dropdown-header">{{ trans('labels.itinerarios') }}</li>
-                  <li><a href="{{ route('itinerario') }}">{{ trans('labels.list') }}</a></li>
-                  <li><a href="{{ route('itinerario_deleted') }}">{{ trans('labels.deleted') }}</a></li>
-                  <li><a href="{{ route('itinerario_new') }}">{{ trans('labels.new') }}</a></li>  
-                
-           
+                  <li class="dropdown-header">{{ trans('labels.tipo') }}s</li>
+                  <li><a href="{{ route('tipo') }}">{{ trans('labels.list') }}</a></li>                 
+                  <li><a href="{{ route('tipo_new') }}">{{ trans('labels.new') }}</a></li>  
+                  <li role="separator" class="divider"></li>          
 
              </ul>
             </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('labels.rondas') }} <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('labels.pedido') }}s <span class="caret"></span></a>
                 <ul class="dropdown-menu">                    
-                    <li><a href="{{ route('ronda') }}">{{ trans('labels.list') }}</a></li>
-                    <li><a href="{{ route('ronda_deleted') }}">{{ trans('labels.deleted') }}</a></li>
-                    <li><a href="{{ route('ronda_new') }}">{{ trans('labels.new') }}</a></li>
+                    <li><a href="{{ route('pedido') }}">{{ trans('labels.list') }}</a></li>                    
+                    <li><a href="{{ route('pedido_new') }}">{{ trans('labels.new') }}</a></li>
                 </ul>
               </li>
                  

@@ -49,13 +49,7 @@ class User extends Model implements AuthenticatableContract,
 
    
 
-    // one to one
-    //tem  itinerario
-    public function itinerario()
-    {
-        return $this->hasOne('App\Itinerario');
-    }
-
+   
 
     /*
     |--------------------------------------------------------------------------

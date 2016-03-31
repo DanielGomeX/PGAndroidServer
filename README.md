@@ -29,8 +29,14 @@
  - Create products groups getJson
  - Associate Products with groups
  - Create Products getJson
- 
-  #ToDo(Pendding)  
  - Create Cart
+ - Recreate menus
+ - View Cart
+  #ToDo(Pendding)  
+ - Integrate Open MapStreet
+ - Set Point on MapStreet
+ - Filter by Agent
+ - Filter by hour
  - Create Geolocation
+
 

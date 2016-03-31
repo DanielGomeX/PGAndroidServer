@@ -53,6 +53,17 @@ Route::group(['middleware' => 'acl:root'], function(){
 
 Route::group(['middleware' => 'auth'], function(){
 
+	Route::get('pedidos', [ 'as' => 'pedido', 'uses' => 'PedidoController@index']);
+	Route::get('pedido/deleted', [ 'as' => 'pedido_deleted', 'uses' => 'PedidoController@deleted']);
+	Route::get('pedido/new', [ 'as' => 'pedido_new', 'uses' => 'PedidoController@create']);
+	Route::get('pedido/edit/{id}', [ 'as' => 'pedido_edit', 'uses' => 'PedidoController@edit']);
+	Route::post('pedido/restore/{id}', [ 'as' => 'pedido_restore', 'uses' => 'PedidoController@restore']);
+	Route::post('pedido/destroy/{id}', [ 'as' => 'pedido_delete', 'uses' => 'PedidoController@destroy']);
+	Route::post('pedido/store', [ 'as' => 'pedido_store', 'uses' => 'PedidoController@store']);
+	Route::get('json/pedidos/', [ 'as' => 'pedidos_json', 'uses' => 'PedidoController@getJson']);
+
+	
+
 	Route::get('tipos', [ 'as' => 'tipo', 'uses' => 'TipoController@index']);
 	Route::get('tipo/deleted', [ 'as' => 'tipo_deleted', 'uses' => 'TipoController@deleted']);
 	Route::get('tipo/new', [ 'as' => 'tipo_new', 'uses' => 'TipoController@create']);

@@ -1,5 +1,7 @@
 <?php
 return [   
+    'pedido' => 'Pedido',
+    'product' => 'Produto',
     'tipo' => 'Tipo',
     'valor' => 'Valor',
     'name' => 'Nome',

@@ -23,7 +23,8 @@ class SessionController extends Controller
         //para obter dados como nome, grupo e principalente as permissoes
       
         if (Auth::attempt(['email' => $request->input("email"), 'password' => $request->input("password")])) {
-           $user = Auth::user();           
+           $user = Auth::user();          
+           session(['user_id' => $user->id]); 
            session(['user_name' => $user->name]);
            session(['user_permissions' => $user->group->permissions()->lists('permission_id')->toArray()]);          
            session(['user_group' => $user->group]);
