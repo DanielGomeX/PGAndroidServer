@@ -16,6 +16,14 @@
                 <span class="error-field">{{ $errors->first('name') }}</span>
             </div>
         </div> 
+        <div class="col-md-3">
+            <div class="form-group btn-sz-3">
+                <label for="tipo_id">{{ trans('labels.tipo') }}</label><br>
+                {!! Form::select('tipo_id', $tipos , $product->tipo_id ,array('id'=>'tipo_id', 'class' => 'form-control min-width-1'))  !!}
+                <span class="error-field">{{ $errors->first('tipo_id') }}</span>
+            </div>
+        </div> 
+
          <div class="col-md-1">
             <div class="form-group">
                 <label for="valor">{{ trans('labels.valor') }}</label>
@@ -23,6 +31,7 @@
                     <span class="error-field">{{ $errors->first('valor') }}</span>
             </div>
         </div>
+
 
     </div>    
     <div class="row btn-sz-2">

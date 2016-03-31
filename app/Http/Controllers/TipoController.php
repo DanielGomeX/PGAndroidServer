@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Tipo;
 use App\Permission;
 use Session;
+use DB;
 
 class TipoController extends Controller
 {
@@ -14,10 +15,12 @@ class TipoController extends Controller
     protected $singular;
     protected $newObject;
     protected $rules;
+    protected $jsonList;
     public function __construct(){
         $this->all = Tipo::orderBy('name');
         $this->singular = 'tipo';
         $this->newObject = new Tipo();  
+        $this->jsonList = ['id','name'];
         $this->rules =[                
                 'name' => 'required|max:30',                     
             ];         
@@ -102,4 +105,8 @@ class TipoController extends Controller
         Session::flash('message', trans('labels.item').' '.trans('labels.deletedSingle').' '.trans('labels.withSuccess'));
         return redirect()->route($this->singular);
     }   
+
+    public function getJson(){
+        return DB::table($this->singular.'s')->select($this->jsonList)->get();
+    }
 }

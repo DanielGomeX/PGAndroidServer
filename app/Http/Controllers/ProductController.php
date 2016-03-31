@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Tipo;
 use App\Permission;
 use Session;
+use DB;
 class ProductController extends Controller
 {
     
@@ -73,20 +75,23 @@ class ProductController extends Controller
         //pq gosto de usar o mesmo 
         //form para editar e para cadastrar
         //isso facilita a manutencao e o
-        //entendimento do sistema        
+        //entendimento do sistema  
+
         $product= new Product();
         return view('product.form')
             ->with('acao',trans('labels.new').' '.trans('labels.product'))
+            ->with('tipos',['' => 'Selecione'] + Tipo::all()->lists('name','id')->toArray())    
             ->with("product",$product);
     }
 
     public function edit($id)
     {
-        //envio para a view o grupo para ser 
+        //envio para a view o grupo para ser    
         //editado
         $product= Product::find($id);
         return view('product.form')
             ->with('acao',trans('labels.edit').' '.$product->name)
+            ->with('tipos',['' => 'Selecione'] + Tipo::all()->lists('name','id')->toArray())    
             ->with("product",$product);
     }
 
@@ -95,6 +100,8 @@ class ProductController extends Controller
         $rules =[                
                 'name' => 'required|max:30',    
                 'valor' => 'required|max:30',
+                'tipo_id' => 'required',
+
         ];
         $this->validate($request, $rules); 
 
@@ -112,6 +119,7 @@ class ProductController extends Controller
         //qualquer das situacoes de criacao ou edicao
         $product->name = $request->input("name");     
         $product->valor = $request->input("valor");
+        $product->tipo_id = $request->input("tipo_id");
         $product->save();
         Session::flash('message', trans('labels.item').' '.$acao.' '.trans('labels.withSuccess'));
         return redirect()->route('product');
@@ -125,12 +133,11 @@ class ProductController extends Controller
         return redirect()->route('product');
     }
 
-    public function restore($id)
-    {
-        Product::withTrashed()
-        ->where('id', $id)
-        ->restore();
-        Session::flash('message', trans('labels.item').' '.trans('labels.recovered').' '.trans('labels.withSuccess'));
-        return redirect()->route('product');        
+   
+
+    public function getJson(){
+        return DB::table('products')
+            ->join('tipos', 'products.tipo_id', '=', 'tipos.id')
+            ->select('products.id as id_produto','products.name','products.valor as preco','tipo_id','tipos.name as tipo')->get();
     }
 }

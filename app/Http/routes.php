@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('tipo/restore/{id}', [ 'as' => 'tipo_restore', 'uses' => 'TipoController@restore']);
 	Route::post('tipo/destroy/{id}', [ 'as' => 'tipo_delete', 'uses' => 'TipoController@destroy']);
 	Route::post('tipo/store', [ 'as' => 'tipo_store', 'uses' => 'TipoController@store']);
+	Route::get('json/tipos/', [ 'as' => 'tipos_json', 'uses' => 'TipoController@getJson']);
 
 
 
@@ -70,7 +71,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('product/restore/{id}', [ 'as' => 'product_restore', 'uses' => 'ProductController@restore']);
 	Route::post('product/destroy/{id}', [ 'as' => 'product_delete', 'uses' => 'ProductController@destroy']);
 	Route::post('product/store', [ 'as' => 'product_store', 'uses' => 'ProductController@store']);
-
+	Route::get('json/products/', [ 'as' => 'products_json', 'uses' => 'ProductController@getJson']);
 
 	Route::get('groups', [ 'as' => 'group', 'uses' => 'GroupController@index']);
 	Route::get('group/deleted', [ 'as' => 'group_deleted', 'uses' => 'GroupController@deleted']);

@@ -1,5 +1,7 @@
 <?php
 return [   
+    'tipo' => 'Tipo',
+    'valor' => 'Valor',
     'name' => 'Nome',
     'password' => 'Senha',
     'client' => 'Empresa',

@@ -26,10 +26,11 @@
  - Create User Groups
  - Create Products
  - Create products groups
- 
-  #ToDo(Pendding)
  - Create products groups getJson
+ - Associate Products with groups
  - Create Products getJson
+ 
+  #ToDo(Pendding)  
  - Create Cart
  - Create Geolocation
 

@@ -18,7 +18,10 @@ class Product extends Model
     protected $table = 'products';
 
 
-    
+    public function tipo()
+    {
+        return $this->belongsTo('App\Tipo');
+    }
 
 
 }

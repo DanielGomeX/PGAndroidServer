@@ -29,6 +29,7 @@
 		    <tr>
 		    	<th class="center">#</th>
 		    	<th>{{ trans('labels.description') }}</th>		
+		    	<th>{{ trans('labels.tipo') }}</th>		
 		    	<th class="center">{{ trans('labels.valor') }}</th>
 		    	<th colspan="2" class="center">{{ trans('labels.actions') }}</th>
 		    </tr>
@@ -38,24 +39,13 @@
 				<tr>
 			        <td class="center">{{ $product->id }} </td>
 			        <td>{{ $product->name }} </td>
-			        
+			        <td>{{ $product->tipo->name }} </td>
 			        <td class="center">{{ $product->valor }} </td>
 			        <td class="col-md-2 center">
 			        	<a href="{{ route('product_edit', ['id' => $product->id])}}" class="btn btn-success">
 			        		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			        	</a> 
-			        	@if ($deleted)			        		
-			        		<form class="hide" id="theForm_{{ $product->id }}" name="theForm_{{ $product->id }}" method="POST" action="{{ route('product_restore', ['id' => $product->id]) }}">
-					    		{!! csrf_field() !!}
-					    		<button type="button" class="btn btn-warning" onClick="javascript:confirRestoreForm('theForm_{{ $product->id }}','{{ $product->name }}')">
-					    			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					    		</button>
-				    		</form>
-				    		<a href="javascript:confirRestoreForm('theForm_{{ $product->id }}','{{ $product->name }}')" class="btn btn-warning">
-				        		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				        	</a> 
-			        	@else	
-				    	<form  class="hide" id="theForm_{{ $product->id }}" name="theForm_{{ $product->id }}" method="POST" action="{{ route('product_delete', ['id' => $product->id]) }}">
+			        	<form  class="hide" id="theForm_{{ $product->id }}" name="theForm_{{ $product->id }}" method="POST" action="{{ route('product_delete', ['id' => $product->id]) }}">
 				    		{!! csrf_field() !!}
 				    		<button type="button" class="btn btn-danger" onClick="javascript:confirDeleteForm('theForm_{{ $product->id }}','{{ $product->name }}')">
 				    			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -64,7 +54,6 @@
 				    	<a href="javascript:confirDeleteForm('theForm_{{ $product->id }}','{{ $product->name }}')" class="btn btn-danger">
 			        		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			        	</a> 
-				    	@endif
 			        </td>			      
 			    </tr>    
 		 	@endforeach  
