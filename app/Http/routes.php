@@ -31,12 +31,16 @@ Route::get('/', function () {
     return view('layout.home');
 });
 
+Route::post('coordenadas/new/', [ 'as' => 'coordenadas_new', 'uses' => 'CoordenadaController@store']);
+Route::post('pedido/store', [ 'as' => 'pedido_store', 'uses' => 'PedidoController@store']);
+Route::get('json/users/', [ 'as' => 'user_json', 'uses' => 'UserController@getJson']);
+Route::get('json/pedidos/', [ 'as' => 'pedidos_json', 'uses' => 'PedidoController@getJson']);
 
 //ainda precisa serem criadas as acl... mas os processos já estao feitos...
 // como segue um exemplo de root...
 
 Route::group(['middleware' => 'acl:root'], function(){
-	Route::get('json/users/', [ 'as' => 'user_json', 'uses' => 'UserController@getJson']);
+	
 
 
 	Route::get('users', [ 'as' => 'user', 'uses' => 'UserController@index']);
@@ -52,6 +56,13 @@ Route::group(['middleware' => 'acl:root'], function(){
 
 
 Route::group(['middleware' => 'auth'], function(){
+	Route::get('mapa', [ 'as' => 'mapa', 'uses' => 'MapaController@index']);
+
+
+
+
+	
+
 
 	Route::get('pedidos', [ 'as' => 'pedido', 'uses' => 'PedidoController@index']);
 	Route::get('pedido/deleted', [ 'as' => 'pedido_deleted', 'uses' => 'PedidoController@deleted']);
@@ -59,8 +70,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('pedido/edit/{id}', [ 'as' => 'pedido_edit', 'uses' => 'PedidoController@edit']);
 	Route::post('pedido/restore/{id}', [ 'as' => 'pedido_restore', 'uses' => 'PedidoController@restore']);
 	Route::post('pedido/destroy/{id}', [ 'as' => 'pedido_delete', 'uses' => 'PedidoController@destroy']);
-	Route::post('pedido/store', [ 'as' => 'pedido_store', 'uses' => 'PedidoController@store']);
-	Route::get('json/pedidos/', [ 'as' => 'pedidos_json', 'uses' => 'PedidoController@getJson']);
+	
+	
 
 	
 

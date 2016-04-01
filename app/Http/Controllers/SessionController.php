@@ -26,6 +26,7 @@ class SessionController extends Controller
            $user = Auth::user();          
            session(['user_id' => $user->id]); 
            session(['user_name' => $user->name]);
+         
            session(['user_permissions' => $user->group->permissions()->lists('permission_id')->toArray()]);          
            session(['user_group' => $user->group]);
           
